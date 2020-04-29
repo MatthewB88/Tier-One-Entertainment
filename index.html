@@ -1,0 +1,694 @@
+<!doctype html>
+
+<html>
+<head>
+<title>Tier One Entertainment</title>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+	
+* {
+	margin: 0;
+	padding: 0;
+
+}
+
+.row > .column {
+  padding: 0 8px;
+  margin-right:97px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+  
+}
+
+.column {
+  float: left;
+  width: 25%;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.close {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mySlides {
+  display: none;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.numbertext {
+  color: #333;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+.caption-container {
+  text-align: center;
+  background-color: black;
+  padding: 2px 16px;
+  color: white;
+}
+
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+img.hover-shadow {
+  transition: 0.3s;
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+	
+.opac:hover{
+	opacity:0.5;
+}
+
+.img__wrap {
+  position: relative;
+  height: 318px;
+  width: 440px;
+}
+
+.img__description {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.8);
+  color: #00000;
+  visibility: hidden;
+  opacity: 0;
+
+}
+
+.img__wrap:hover .img__description {
+  visibility: visible;
+  opacity: 1;
+}
+
+table{
+	width:100%;
+}
+	
+
+a {
+	text-decoration: underline;
+	color: #0F8C8C;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+body {
+	font-size: 11.5pt;
+	color: #5C5B5B;
+	line-height: 1.75em;
+	font-family: Microsoft Yi Baiti;
+	margin-right:80px;
+	margin-left:80px;
+	
+}
+
+br.clearfix {
+	clear: both;
+}
+
+
+#footer {
+	margin: 40px 0 120px 0;
+	text-align: center;
+	color: #8C8B8B;
+}
+
+#header {
+	height: 150px;
+	position: relative;
+	background: #000000;
+	padding: 20px;
+	color: #FFFFFF;
+
+	border: solid 0px #000000;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	overflow: hidden;
+}
+
+#logo {
+	line-height: 160px;
+	height: 160px;
+	padding: 5px 0 0 0;
+	position: absolute;
+	top: 0;
+	left: 45px;
+}
+
+#logo a {
+	text-decoration: none;
+	color: #FFFFFF;
+	text-shadow: 0;
+}
+
+#logo h1 {
+	font-size: 3.25em;
+}
+
+#slogan {
+	line-height: 160px;
+	height: 160px;
+	padding: 1px 0 0 0;
+}
+
+#slogan h2 {
+	color: #BEBEBE;
+	font-size: 1.25em;
+	text-shadow: 0 1px 1px #3E3E3E;
+}
+
+#menu {
+	padding: 0 45px 0 45px;
+	position: relative;
+	background: black repeat-x top left;
+	margin: 0 0 0 0;
+	height: 60px;
+	line-height: 60px;
+
+	border-top: solid 1px black;
+	text-shadow: 0 2px 2px #D3D3D3;
+}
+
+#menu a {
+	text-decoration: none;
+	color: white;
+	font-size: 1.25em;
+	letter-spacing: -1px;
+}
+
+#menu ul {
+	list-style: none;
+}
+
+#menu ul li {
+	padding: 0 20px 0 20px;
+	display: inline;
+}
+
+#menu ul li.first {
+	padding-left: 0;
+}
+
+#wrapper {
+	position: relative;
+	
+	
+	background: #FFFFFF;
+}
+	
+#millenial {
+	background: #050505;
+	height:530px;
+	width: 1359px;
+	color:white;
+	}
+#work {
+	background: #050505;
+	height:200px;
+	width: 1346px;
+	color:white;
+	}
+#team {
+	background: #050505;
+	height:200px;
+	width: 1350px;
+	color:white;
+	}
+
+#foundersintro{
+	margin-right:50px;
+	margin-left:50px;
+	}
+#founders {
+	text-align: center;
+	margin-right:75px;
+	}
+
+	#founders h5 {
+	margin-left: 50px;
+	margin-right: 50px;
+	}
+	
+#gameplan {
+	margin-left:0px;
+	}
+
+#gameplan h3 {
+	margin-right: 100px;
+}
+
+#chooseus{
+	margin-right:80px;
+}
+
+#chooseus h3{
+	margin-right:70px;
+	margin-left:70px;
+	}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: black;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+	
+</style>
+</head>
+<body>
+<div id="wrapper">
+	<div id="header">
+		<div id="logo">
+	  </div>
+		<div id="slogan"> 
+			<center>
+			<img src="logo.jpeg" alt="img" height="120" width="460">
+			</center>
+		</div>
+	</div>
+	<div id="menu">
+		<ul>
+			<li class="first current_page_item"><a href="index.html">HOME</a></li>
+			<li><a href="Our Talents.html">OUR TALENTS</a></li>
+			<li><a href="One Academy.html">ONE ACADEMY</a></li>
+			<div class="dropdown">
+				<span><li><a href="#">MEDIA</a></li></span>
+				<div class="dropdown-content">
+  				<a href="Allaccess.html">ALL ACCESS</a>
+				<br />
+				<a href="News.html">NEWS</a>
+				<br />
+				<a href="Press.html">PRESS</a>
+  				</div>
+			</div>
+			<li><a href="Careers.html">CAREERS</a></li>
+			<li><a href="Contact Us.html">CONTACT US</a></li>
+		</ul>
+		<br class="clearfix" />
+	</div>
+
+	
+
+	<center>
+	
+	<img src="Background.jpg" width="1359">
+	
+	</center>
+	</br>
+	<div id="foundersintro">
+	<h1>FOUNDING OF TIER ONE ENTERTAINMENT</h1>
+	</br>
+
+	<h3>In the digital era of advertising, those who don't take gaming seriously will be left behind.
+		- TRYKE GUTIERREZ, CEO OF TIER ONE ENTERTAINMENT</br></br>
+    Tier One Entertainment was founded in 2017 by esports veteran Tryke Gutierrez and cosplay and gaming star Alodia Gosiengfiao. Together, they sought to revolutionize the esports landscape in Southeast Asia.</br></br>
+	By focusing on the development of truly talented, top-caliber personalities, Tier One’s mission is to connect brands with the unique gaming audience like never before.
+	</h3>
+	</div>
+    </br>
+    </br>
+
+	<div id="founders">
+	<table>
+	<tr>
+	<th><center><div class="opac"><img src="TrykeBW.jpg"></div></center></th>
+	<th><center><div class="opac"><img src="AlodiaBW.jpg"></div></center></th>
+    <th><center><div class="opac"><img src="BrianBW.jpg"></div></center></th>
+	</tr>
+	<tr>
+
+	<th><center><h2>TRYKE GUTIERREZ</h2></center></th>
+	<th><center><h2>ALODIA GOSIENGFIAO</h2></center></th>
+	<th><center><h2>BRIAN LIM</h2></center></th>
+
+	</tr>
+	<tr>
+	
+	<th><center><h3>CHIEF EXECUTIVE OFFICER</h3></center></th>
+	<th><center><h3>CHIEF CREATIVE OFFICER</h3></center></th>
+	<th><center><h3>MANAGING DIRECTOR</h3></center></th>
+	</tr>
+		
+	<tr>
+	<th><center><h5>Tryke Gutierrez is locally known as one of the first two shoutcasters in the country. He is also known for organizing numerous events and one of the pioneers of Philippine eSports. He has numerous experience in eSports from shoutcasting, event organizing, eSports publications, influencer management, marketing thru eSports, managing professional eSports teams, and more. He was once a competitive player that started out organizing events due to the lack of opportunities for tournaments in the region.</h5></center></th>
+		
+	<th><center><h5>Alodia Gosiengfiao is an international cosplay icon and has been guesting and judging in different cosplay conventions around the world for the past few years. She has also been featured in various magazines, newspapers, and TV shows locally and abroad. She was named by UNO Magazine as one of the Most Influential Women in the Philippines. She was also named as one of the most popular Cosplayers in the world according to TheRichest.com</h5></center></th>
+		
+	<th><center><h5>Commanding the helm of two major Philippine companies at a young age, Brian Lim is no stranger to managing high-profile projects. What sets him apart aside from his business acumen is his love for esports, serving as Philippine eSports Organization's chairman in 2012.</h5></center></th>
+	</tr>
+	</table>
+	</div>
+</br>
+</br>
+
+<table>
+	<tr>
+	<td><a href="http://www.bitkraft.net/portfolio.html"><img src="bitkraft.jpg"</a></td>
+		<th><img src="White.png"></th>
+		<td><h2><b>SUPPORTED BY BITKRAFT ESPORTS VENTURES</b></br>BITKRAFT is an early stage investor and company builder focussed entirely on the esports sector. They find, support, and scale esports startups along with the industry’s most influential companies.</br> </h2></td>
+	</tr>
+
+</table>
+</br>
+</br>
+
+<div id="millenial">
+</br>
+</br>
+</br>
+<center><img src="quote.png"></center>
+<h2><center>THE MILLENIAL EXODUS</center></h2>
+</br>
+<h2><center>In this era of the Millenial Exodus from traditional media, Tier One Entertainment aims to bridge the gap between brands and the hard-to-target youth through esports and gaming. We plan to change the way things are done in the esports world by amplifying the talents in the industry.</center></h2>
+</br>
+<center><div class="opac"><a href="Contact Us.html"><img src="getintouch.png"></a></div></center>
+</div>
+
+</br>
+</br>
+</br>
+
+<center><h1>OUR GAMEPLAN</h1></center>
+</br>
+</br>
+<center><img src="gameplan.png"></center>
+</br>
+</br>
+</br>
+
+<div class="row">
+	<div class="column">
+	<img src="talents.jpg" style="width:100%" onclick="openModal();currentSlide(1)"class="hover-shadow cursor">
+	</div>
+	<div class="column">
+	<img src="worldclass-studio.jpg" style="width:100%" onclick="openModal();currentSlide(2)"class="hover-shadow cursor">
+	</div>
+	<div class="column">
+	<img src="prod-team.jpg" style="width:100%" onclick="openModal();currentSlide(3)"class="hover-shadow cursor">
+	</div>
+</div>
+
+<div id="myModal" class="modal">
+	<span class="close cursor" onclick="closeModal()">&times;</span>
+	<div class="modal-content">
+	
+		<div class="mySlides">
+			<div class="numbertext">1 / 3</div>
+			<img src="talents.jpg" style="width:100%">
+		</div>
+		
+		<div class="mySlides">
+			<div class="numbertext">2 / 3</div>
+			<img src="worldclass-studio.jpg" style="width:100%">
+		</div>
+		
+		<div class="mySlides">
+			<div class="numbertext">3 / 3</div>
+			<img src="prod-team.jpg" style="width:100%">
+		</div>
+	
+		</div>
+		
+		<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    	<a class="next" onclick="plusSlides(1)">&#10095;</a>
+		
+		<div class="caption-container">
+      		<p id="caption"></p>
+    	</div>
+		
+		<div class="row">
+		<div class="column">
+     		 <img class="demo cursor" src="talents.jpg" style="width:100%" onclick="currentSlide(1)" alt="TALENTS">
+   		</div>
+    	<div class="column">
+      		<img class="demo cursor" src="worldclass-studio.jpg" style="width:100%" onclick="currentSlide(2)" alt="WORLD CLASS STUDIO">
+    	</div>
+    	<div class="column">
+      		<img class="demo cursor" src="prod-team.jpg" style="width:100%" onclick="currentSlide(3)" alt="CREATIVE PRODUCTION TEAM">
+    	</div>
+ 	 </div>
+	</div>
+	
+<script>
+function openModal() {
+  document.getElementById("myModal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("myModal").style.display = "none";
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
+
+<div id="gameplan">
+<table>
+
+<tr>
+
+<td><h2>TALENTS</h2></td>
+<td><h2>WORLD CLASS STUDIO</h2></td>
+<td><h2>CREATIVE PRODUCTION TEAM</h2></td>
+</tr>
+<tr>
+<td><h3>We field the hottest digital stars with the most talented esports professionals in Southeast Asia and beyond. From show hosts, to presenters, commentators, and personalities, Tier One has the best in the region</h3></td>
+<td><h3>Tier 1 will be providing its talents with the best facilities for both content creation and talent development. The studio will feature streaming rooms, training rooms, high speed internet and many more.</h3></td>
+<td><h3>Our professional staff of creatives can answer any need in any medium. From gorgeous videos to stirring event photos that capture the magic of the moment, Tier One delivers.</h3></td>
+</tr>
+</table>
+</div>
+
+</br>
+</br>
+</br>
+</br>
+</br>
+
+<center>
+<h1>OUR TALENTS</h1>
+</br>
+<table> 
+<tr>
+	<th><div class="img__wrap"><img src="1Alodia.jpg" height="318" width="440"><h2 class="img__description">ALODIA GOSIENGFIAO</br>CELEBRITY | COSPLAYER | YOUTUBER</h2></div></th>
+	<th><div class="img__wrap"><img src="2Ashley.jpg" height="318" width="440"><h2 class="img__description">ASHLEY GOSIENGFIAO</br>COSPLYAER | MUSICIAN | TWITCH STREAMER</h2></div></th>
+	<th><div class="img__wrap"><img src="3Bianca.jpg" height="318" width="440"><h2 class="img__description">BIANCA YAO</br>TWITCH STREAMER | DOTA 2 SHOUTCASTER | EVENT HOST</h2></div></th>
+</tr>
+	
+<tr>
+	<th><div class="img__wrap"><img src="4Tryke.jpg" height="318" width="440"><h2 class="img__description">TRYKE GUTIERREZ</br>DOTA 2 SHOUTCASTER</h2></div></th>
+	<th><div class="img__wrap"><img src="5KuyaNic.jpg" height="318" width="440"><h2 class="img__description">NICO "KUYA NIC" NAZARIO </br> MANAGING PARTNER - WOMBOXCOMBO</h2></div></th>
+	<th><div class="img__wrap"><img src="6TNC.jpg" height="318" width="440"><h2 class="img__description">TNC PRO TEAM</br>DOTA 2 WORLD CHAMPIONS</h2></div></th>
+</tr>
+	
+</table>
+</center>
+<div id="work">
+	</br>
+<center><h1>WORK WITH US</h1></center>
+</br>
+<center><img src="wantmeet.png" usemap="#wantmeetmap"></center>
+<map name="wantmeetmap">
+	<area shape="rect" coords="3,2,324,48" href="Contact Us.html">
+	<area shape="rect" coords="329,2,635,48" href="Our Talents.html">
+</map>
+</div>
+</br>
+</br>
+</br>
+<center><h1>WHY CHOOSE US?</h1></center>
+</br>
+</br>
+
+<div id="chooseus">
+<table>
+<tr>
+<th><center><img src="creative.png"></center></th>
+<th><center><img src="language.png"></center></th>
+<th><center><img src="connected.png"></center></th>
+</tr>
+<tr>
+<th><center><h2>WE’RE CREATIVE</h2></center></th>
+<th><center><h2>WE SPEAK THE LANGUAGE</h2></center></th>
+<th><center><h2>WE ARE CONNECTED</h2></center></th>
+</tr>
+<tr>
+<th><center><h3>Our diverse team allows us to create groundbreaking solutions for any situation. With a team composed of former professional players, event organizers, industry leaders, journalists, graphic designers, and digital media stars, Tier One ensures that every project is truly unique.</h3><center></th>
+<th><center><h3>Tier One is fluent in the language of the gaming and esports audience. We will serve as your translators as you connect your brand with the millennial gamer generation.</h3></center></th>
+<th><center><h3>With connections in gaming, esports and entertainment, Tier One’s network reaches beyond the borders of the Philippines. Strategically based in Manila, the company is at the forefront of one of the fastest rising esports regions in the world.</h3></center></th>
+</tr>
+
+<tr>
+<th><center><img src="experienced.png"></center></th>
+<th><center><img src="revolutionary.png"></center></th>
+<th><center><img src="authentic.png"></center></th>
+</tr>
+<tr>
+<th><center><h2>WE ARE EXPERIENCED</h2></center></th>
+<th><center><h2>WE ARE REVOLUTIONARY</h2></center></th>
+<th><center><h2>WE ARE AUTHENTIC</h2></center></th>
+</tr>
+<tr>
+<th><center><h3>Led by the generation of gamers who lived in a time where esports wasn’t even a term yet, Tier One is backed by veteran professionals who are not just passionate about gaming but knows the gaming landscape inside and out.</h3></center></th>
+<th><center><h3>The key to success in a volatile and competitive industry is courage and competence. Tier One is not afraid to explore bold approaches through influencers in a young industry that is saturated with old ideas.</h3></center></th>
+<th><center><h3>At the end of the day, we are gamers. This guides every decision and every piece of content we make. With Tier One, you can be sure that our every action is legit.</h3></center></th>
+</tr>
+</table>
+</div>
+</br>
+</br>
+</br>
+
+<div id="team">
+</br>
+<center><h1>WANT TO BE PART OF THE TEAM?</h1></center>
+</br>
+<center><div class="opac"><a href="careers.html"><img src="hiring.png"></a></div></center>
+
+</div>
+	
+
+	
+	
+	
+	<div id="footer">
+		<img src="logo foot.png" alt="img" height="142" width="176">
+		<br />
+		© TIER ONE ENTERTAINMENT 2020. 
+		Developed by:
+		<br />
+		John Robert Briz
+		<br />
+		Matthew Borja
+			<br />
+		Jerick Aquino</a>.
+</div>
+</body>
+</html>
